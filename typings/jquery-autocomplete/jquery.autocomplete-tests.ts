@@ -38,6 +38,26 @@ input.autocomplete({
     }
 });
 
+// Custom lookup function:
+input.autocomplete({
+    lookup: function (query, done) {
+        // Do Ajax call or lookup locally, when done,
+        // call the callback and pass your results:
+        var result = {
+            suggestions: [
+                { "value": "United Arab Emirates", "data": "AE" },
+                { "value": "United Kingdom",       "data": "UK" },
+                { "value": "United States",        "data": "US" }
+            ]
+        };
+
+        done(result);
+    },
+    onSelect: function (suggestion) {
+        alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+    }
+});
+
 // Non standard query/results
 input.autocomplete({
     paramName: 'searchString',
